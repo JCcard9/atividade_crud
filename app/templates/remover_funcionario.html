@@ -1,3 +1,6 @@
+
+{% load static %}
+
 <!DOCTYPE html>
 {% load django_bootstrap5 %}
 <html lang="pt-br">
@@ -8,9 +11,12 @@
     <title>Remover Funcionário</title>
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
 </head>
 
 <body>
+    <div class="container">
     <h2> Funcionário: {{ object.nome }} </h2>
     <li>CPF: {{ object.cpf }}</li>
     <li>E-mail: {{ object.email }}</li>
@@ -21,6 +27,7 @@
         <input type="submit" class="btn btn-danger" value="Remover">
         <button type="button" class="btn btn-success" onClick="history.go(-1)"> Voltar </button>
     </form>
+</div>
 </body>
 
 </html>

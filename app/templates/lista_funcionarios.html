@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 {% load django_bootstrap5 %}
 <html lang="pt-br">
@@ -13,10 +14,13 @@
     </style>
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
 </head>
 
 <body>
     <h1> Listagem de Funcionários</h1>
+    <div class="container">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -35,9 +39,10 @@
                     {{ funcionario.nome }}
                 </td>
                 <td>
-                    <a href={% url "listar_funcionario" pk=funcionario.id %}>Exibir dados</a>
-                    <a href={% url "editar_funcionario" pk=funcionario.id %}>Editar</a>
-                    <a href={% url "remover_funcionario" pk=funcionario.id %}>Remover</a>
+                    <a class="btn btn-success" href={% url "listar_funcionario" pk=funcionario.id %}>Exibir dados</a>
+                    <a class="btn btn-primary" href={% url "editar_funcionario" pk=funcionario.id %}>Editar</a>
+                    <a class="btn btn-danger" href={% url "remover_funcionario" pk=funcionario.id %}>Remover</a>
+                </div>
                 </td>
             </tr>
             {% endfor %}
@@ -45,5 +50,4 @@
     </table>
 
     <a href="{% url 'form_funcionario' %}" class="btn btn-primary">Cadastrar um novo funcionário</a>
-
 </body>
